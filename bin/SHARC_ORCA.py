@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/python2
 
 #******************************************
 #
@@ -89,7 +89,7 @@ changelogstring='''
 - QM/MM capabilities in combination with TINKER
 - AO overlaps computed by PyQuante (only up to f functions)
 
-11.09.2018: 
+11.09.2018:
 - added "basis_per_element", "basis_per_atom", and "hfexchange" keywords
 
 03.10.2018:
@@ -114,31 +114,31 @@ PRINT=True
 
 # hash table for conversion of multiplicity to the keywords used in MOLCAS
 IToMult={
-                 1: 'Singlet', 
-                 2: 'Doublet', 
-                 3: 'Triplet', 
-                 4: 'Quartet', 
-                 5: 'Quintet', 
-                 6: 'Sextet', 
-                 7: 'Septet', 
-                 8: 'Octet', 
-                 'Singlet': 1, 
-                 'Doublet': 2, 
-                 'Triplet': 3, 
-                 'Quartet': 4, 
-                 'Quintet': 5, 
-                 'Sextet': 6, 
-                 'Septet': 7, 
+                 1: 'Singlet',
+                 2: 'Doublet',
+                 3: 'Triplet',
+                 4: 'Quartet',
+                 5: 'Quintet',
+                 6: 'Sextet',
+                 7: 'Septet',
+                 8: 'Octet',
+                 'Singlet': 1,
+                 'Doublet': 2,
+                 'Triplet': 3,
+                 'Quartet': 4,
+                 'Quintet': 5,
+                 'Sextet': 6,
+                 'Septet': 7,
                  'Octet': 8
                  }
 
 # hash table for conversion of polarisations to the keywords used in MOLCAS
 IToPol={
-                0: 'X', 
-                1: 'Y', 
-                2: 'Z', 
-                'X': 0, 
-                'Y': 1, 
+                0: 'X',
+                1: 'Y',
+                2: 'Z',
+                'X': 0,
+                'Y': 1,
                 'Z': 2
                 }
 
@@ -153,12 +153,12 @@ FROZENS = {'H':  0, 'He': 0,
 'Y':14,  'Zr':14, 'Nb':14, 'Mo':14, 'Tc':14, 'Ru':14, 'Rh':14, 'Pd':14, 'Ag':14, 'Cd':14,
 'In':18, 'Sn':18, 'Sb':18, 'Te':18,  'I':18, 'Xe':18,
 'Cs':18, 'Ba':18,
-'La':18, 
+'La':18,
 'Ce':18, 'Pr':18, 'Nd':18, 'Pm':18, 'Sm':18, 'Eu':18, 'Gd':18, 'Tb':18, 'Dy':18, 'Ho':18, 'Er':18, 'Tm':18, 'Yb':18, 'Lu':23,
          'Hf':23, 'Ta':23,  'W':23, 'Re':23, 'Os':23, 'Ir':23, 'Pt':23, 'Au':23, 'Hg':23,
-'Tl':34, 'Pb':34, 'Bi':34, 'Po':34, 'At':34, 'Rn':34, 
+'Tl':34, 'Pb':34, 'Bi':34, 'Po':34, 'At':34, 'Rn':34,
 'Fr':34, 'Ra':34,
-'Ac':34, 
+'Ac':34,
 'Th':34, 'Pa':34,  'U':34, 'Np':34, 'Pu':34, 'Am':34, 'Cm':34, 'Bk':34, 'Cf':34, 'Es':34, 'Fm':34, 'Md':34, 'No':34, 'Lr':34,
          'Rf':50, 'Db':50, 'Sg':50, 'Bh':50, 'Hs':50, 'Mt':50, 'Ds':50, 'Rg':50, 'Cn':50,
 'Nh':50, 'Fl':50, 'Mc':50, 'Lv':50, 'Ts':50, 'Og':50
@@ -175,12 +175,12 @@ ATOMCHARGE = {'H':1, 'He':2,
 'Y':39,  'Zr':40, 'Nb':41, 'Mo':42, 'Tc':43, 'Ru':44, 'Rh':45, 'Pd':46, 'Ag':47, 'Cd':48,
 'In':49, 'Sn':50, 'Sb':51, 'Te':52,  'I':53, 'Xe':54,
 'Cs':55, 'Ba':56,
-'La':57, 
+'La':57,
 'Ce':58, 'Pr':59, 'Nd':60, 'Pm':61, 'Sm':62, 'Eu':63, 'Gd':64, 'Tb':65, 'Dy':66, 'Ho':67, 'Er':68, 'Tm':69, 'Yb':70, 'Lu':71,
          'Hf':72, 'Ta':73,  'W':74, 'Re':75, 'Os':76, 'Ir':77, 'Pt':78, 'Au':79, 'Hg':80,
-'Tl':81, 'Pb':82, 'Bi':83, 'Po':84, 'At':85, 'Rn':86, 
+'Tl':81, 'Pb':82, 'Bi':83, 'Po':84, 'At':85, 'Rn':86,
 'Fr':87, 'Ra':88,
-'Ac':89, 
+'Ac':89,
 'Th':90, 'Pa':91,  'U':92, 'Np':93, 'Pu':94, 'Am':95, 'Cm':96, 'Bk':97, 'Cf':98, 'Es':99,'Fm':100,'Md':101,'No':102,'Lr':103,
         'Rf':104,'Db':105,'Sg':106,'Bh':107,'Hs':108,'Mt':109,'Ds':110,'Rg':111,'Cn':112,
 'Nh':113,'Fl':114,'Mc':115,'Lv':116,'Ts':117,'Og':118
@@ -616,7 +616,7 @@ def printtheodore(matrix,QMin):
 
 # ======================================================================= #
 def printQMout(QMin,QMout):
-    '''If PRINT, prints a summary of all requested QM output values. Matrices are formatted using printcomplexmatrix, vectors using printgrad. 
+    '''If PRINT, prints a summary of all requested QM output values. Matrices are formatted using printcomplexmatrix, vectors using printgrad.
 
     Arguments:
     1 dictionary: QMin
@@ -745,7 +745,7 @@ def makermatrix(a,b):
 
 # ======================================================================= #
 def writeQMout(QMin,QMout,QMinfilename):
-    '''Writes the requested quantities to the file which SHARC reads in. The filename is QMinfilename with everything after the first dot replaced by "out". 
+    '''Writes the requested quantities to the file which SHARC reads in. The filename is QMinfilename with everything after the first dot replaced by "out".
 
     Arguments:
     1 dictionary: QMin
@@ -1242,7 +1242,7 @@ def prepare_QMMM(QMin,table_file):
 # ======================================================================= #
 
 def execute_tinker(QMin,ff_file_path):
-    ''' 
+    '''
     run tinker to get:
     * MM energy
     * MM gradient
@@ -1547,7 +1547,7 @@ def transform_QM_QMMM(QMin,QMout):
                 for ixyz in range(3):
                     grad[istate][iqmmm][ixyz]+=QMin['qmmm']['MMGradient'][iqmmm][ixyz]
         QMout['grad']=grad
-    
+
     #pprint.pprint(QMout)
     return QMin,QMout
 
@@ -1677,7 +1677,7 @@ def get_pairs(QMinlines,i):
 
 # ======================================================================= #         OK
 def readQMin(QMinfilename):
-    '''Reads the time-step dependent information from QMinfilename. 
+    '''Reads the time-step dependent information from QMinfilename.
 
     Arguments:
     1 string: name of the QMin file
@@ -2028,7 +2028,7 @@ def readQMin(QMinfilename):
         QMin['memory']= float(line[1])
 
     # truncation threshold
-    QMin['wfthres']=0.99 
+    QMin['wfthres']=0.99
     line=getsh2Orcakey(sh2Orca,'wfthres')
     if line[0]:
         QMin['wfthres']= float(line[1])
@@ -2089,7 +2089,8 @@ def readQMin(QMinfilename):
               'scf'                     :'',
               'qmmm_table'              :'ORCA.qmmm.table',
               'qmmm_ff_file'            :'ORCA.ff',
-              'keys'                    :''
+              'keys'                    :'',
+			  'method'                  :'SR'
               }
     integers={
               'frozen'                  :-1
@@ -2104,9 +2105,12 @@ def readQMin(QMinfilename):
               'theodore_fragment'       :[],
               'basis_per_element'       :{},
               'basis_per_atom'          :{},
-              'range_sep_settings'      :{'do':False, 'mu':0.14, 'scal':1.0, 'ACM1':0.0, 'ACM2':0.0, 'ACM3':1.0}
+              'range_sep_settings'      :{'do':False, 'mu':0.14, 'scal':1.0, 'ACM1':0.0, 'ACM2':0.0, 'ACM3':1.0},
+			  'casscf'                  :{},
+			  'nevpt2'                  :{}
               }
-
+    casscf_keys = ['nel', 'norb', 'cistep', 'trafostep', 'gtol', 'etol', 'nroots', 'weights[0]=']
+    nevpt2_keys = ['nthresh', 'd4step', 'd4tpre', 'd35pre', 'ewin', 'tsmalldenom']
     # create QMin subdictionary
     QMin['template']={}
     for i in bools:
@@ -2139,7 +2143,21 @@ def readQMin(QMinfilename):
             QMin['template'][line[0]]=float(line[1])
         elif line[0] in special:
 
-            # paddingstates needs to be autoexpanded and checked
+            if line[0]=='casscf':
+			  if line[1].lower() not in casscf_keys:
+			    print 'Unrecognized CASSCF keyword %s in ORCA.template' % (line[1])
+			    sys.exit("Unrecognized CASSCF keyword in ORCA.template") #TODO: Add exit code
+			  for i in casscf_keys:
+			    if line[1].lower() == i:
+			      QMin['template']['casscf'][i] = line[2]
+            if line[0]=='nevpt2':
+			  if line[1] not in nevpt2_keys:
+			    print 'Unrecognized NEVPT2 keyword %s in ORCA.template' % (line[1])
+			    sys.exit("Unrecognized NEVPT2 keyword in ORCA.template") #TODO: Add exit code
+			  for i in nevpt2_keys:
+			    if line[1].lower() == i:
+			      QMin['template']['nevpt2'][i] = line[2]
+			# paddingstates needs to be autoexpanded and checked
             if line[0]=='paddingstates':
                 if len(line)==2:
                     QMin['template']['paddingstates']=[int(line[1])   for i in range(len(QMin['states']))]
@@ -2215,13 +2233,13 @@ def readQMin(QMinfilename):
                     s=orig.split(None)[1:]
                     for i in s:
                         QMin['template']['theodore_prop'].append(i)
-                theodore_spelling=['Om', 
-                                   'PRNTO', 
+                theodore_spelling=['Om',
+                                   'PRNTO',
                                    'Z_HE', 'S_HE', 'RMSeh',
-                                   'POSi', 'POSf', 'POS', 
+                                   'POSi', 'POSf', 'POS',
                                    'PRi', 'PRf', 'PR', 'PRh',
                                    'CT', 'CT2', 'CTnt',
-                                   'MC', 'LC', 'MLCT', 'LMCT', 'LLCT', 
+                                   'MC', 'LC', 'MLCT', 'LMCT', 'LLCT',
                                    'DEL', 'COH', 'COHh']
                 for i in range(len(QMin['template']['theodore_prop'])):
                     for j in theodore_spelling:
@@ -2342,7 +2360,7 @@ def readQMin(QMinfilename):
     if line[0]:
         numfroz=int(line[1])
         if numfroz==0:
-            QMin['frozcore']=0 
+            QMin['frozcore']=0
         elif numfroz>0:
             QMin['frozcore']=numfroz
         elif numfroz<0:
@@ -2355,15 +2373,15 @@ def readQMin(QMinfilename):
     if line[0]:
         numfroz=int(line[1])
         if numfroz<=0:
-            QMin['ndocc']=0 
+            QMin['ndocc']=0
         elif numfroz>0:
             QMin['ndocc']=max(0,numfroz-QMin['frozcore'])
     else:
-        QMin['ndocc']=0 
+        QMin['ndocc']=0
 
 # --------------------------------------------- Logic ----------------------------------
 
-    # obtain the statemap 
+    # obtain the statemap
     statemap={}
     i=1
     for imult,istate,ims in itnmstates(QMin['states']):
@@ -2636,7 +2654,7 @@ def generate_joblist(QMin):
             jobgrad[state]=(job,gradjob[job][state]['gs'])
     QMin['jobgrad']=jobgrad
     #print gradjob
-    #print 
+    #print
     #print jobgrad
     #sys.exit(74)
 
@@ -2887,6 +2905,9 @@ def writeORCAinput(QMin):
     # gradients
     multigrad=False
     if 'grad' in QMin and QMin['gradmap']:
+        if QMin['method'] == 'NEVPT2':
+          print 'No analytic NEVPT2 gradient for ORCA.'
+          sys.exit("Not implemented error.")
         dograd=True
         egrad=()
         for grad in QMin['gradmap']:
@@ -2922,16 +2943,16 @@ def writeORCAinput(QMin):
     keys=['nousesym']
     for i in keys:
       string+='%s ' % (i)
-
-    string+='grid%s ' % QMin['template']['grid']
+    if QMin['template']['method'] == 'SR':
+        string+='grid%s ' % QMin['template']['grid']
     if QMin['template']['gridx']:
       string+='gridx%s ' % QMin['template']['gridx']
 # In this way, one can change grid on individual atoms:
-#%method 
+#%method
 #SpecialGridAtoms 26,15,-1,-4         # for element 26 and, for atom index 1 and 4 (cannot change on atom 0!)
 #SpecialGridIntAcc 7,6,5,5            # size of grid
 #end
- 
+
     if dograd:
       string+='engrad'
 
@@ -2950,8 +2971,8 @@ def writeORCAinput(QMin):
       string+='end\n\n'
 
     # frozen core
-    if QMin['frozcore']>0:
-      string+='%%method\nfrozencore -%i\nend\n\n' % (2*QMin['frozcore'])
+    if QMin['template']['frozen']>0:
+      string+='%%method\nfrozencore -%i\nend\n\n' % (2*QMin['template']['frozen'])
     else:
       string+='%method\nfrozencore FC_NONE\nend\n\n'
 
@@ -2980,35 +3001,45 @@ def writeORCAinput(QMin):
 
 
     # excited states
-    if ncalc>0 and not 'AOoverlap' in QMin:
-      string+='%tddft\n'
-      if not QMin['template']['no_tda']:
-          string+='tda true\n'
-      else:
-          string+='tda false\n'
-      if QMin['template']['gridxc']:
-          string+='gridxc %s\n' % (QMin['template']['gridxc'])
-      if 'theodore' in QMin:
-          string+='tprint 0.0001\n'
-      if restr and trip:
-          string+='triplets true\n'
-      string+='nroots %i\n' % (ncalc)
-      if restr and 'soc' in QMin:
-          string+='dosoc true\n'
-          string+='printlevel 3\n'
-      if dograd:
-          if multigrad:
-              if singgrad:
-                  string+='sgradlist '
-                  string+=','.join( [str(i) for i in sorted(singgrad)] )
-                  string+='\n'
-              if tripgrad:
-                  string+='tgradlist '
-                  string+=','.join( [str(i) for i in sorted(tripgrad)] )
-                  string+='\n'
-          elif egrad:
-              string+='iroot %i\n' % (egrad[1]-(gsmult==egrad[0]))
-      string+='end\n\n'
+    if QMin['template']['method'] == 'SR':
+      if ncalc>0 and not 'AOoverlap' in QMin:
+        string+='%tddft\n'
+        if not QMin['template']['no_tda']:
+            string+='tda true\n'
+        else:
+            string+='tda false\n'
+        if QMin['template']['gridxc']:
+            string+='gridxc %s\n' % (QMin['template']['gridxc'])
+        if 'theodore' in QMin:
+            string+='tprint 0.0001\n'
+        if restr and trip:
+            string+='triplets true\n'
+        string+='nroots %i\n' % (ncalc)
+        if restr and 'soc' in QMin:
+            string+='dosoc true\n'
+            string+='printlevel 3\n'
+        if dograd:
+            if multigrad:
+                if singgrad:
+                    string+='sgradlist '
+                    string+=','.join( [str(i) for i in sorted(singgrad)] )
+                    string+='\n'
+                if tripgrad:
+                    string+='tgradlist '
+                    string+=','.join( [str(i) for i in sorted(tripgrad)] )
+                    string+='\n'
+            elif egrad:
+                string+='iroot %i\n' % (egrad[1]-(gsmult==egrad[0]))
+        string+='end\n\n'
+    if QMin['template']['method'] == 'NEVPT2':
+        if not 'AOoverlap' in QMin:
+		    string+='%casscf\n'
+		    for casscf_key in QMin['template']['casscf']:
+		      string+='%s %s\n' % (casscf_key,QMin['template']['casscf'][casscf_key])
+		    string+='PTSettings\n'
+		    for nevpt2_key in QMin['template']['nevpt2']:
+		      string+='%s %s\n' % (nevpt2_key,QMin['template']['nevpt2'][nevpt2_key])
+		    string+='end end\n\n'
 
     # output
     string+='%output\n'
@@ -3019,10 +3050,10 @@ def writeORCAinput(QMin):
     string+='end\n\n'
 
     # scf
-    string+='%scf\n'
     if 'AOoverlap' in QMin:
-      string+='maxiter 0\n'
-    string+='end\n\n'
+        string+='%scf\n'
+        string+='maxiter 0\n'
+        string+='end\n\n'
 
     ## TODO: workaround
     #if 'soc' in QMin and 'grad' in QMin:
@@ -4012,7 +4043,7 @@ def run_wfoverlap(QMin,errorcodes):
     if 'ion' in QMin:
         for ionpair in QMin['ionmap']:
             WORKDIR=os.path.join(QMin['scratchdir'],'Dyson_%i_%i_%i_%i' % ionpair)
-            files={'aoovl':'AO_overl', 
+            files={'aoovl':'AO_overl',
                    'det.a': 'dets.%i' % ionpair[0],
                    'det.b': 'dets.%i' % ionpair[2],
                    'mo.a':    'mos.%i' % ionpair[1],
@@ -4026,7 +4057,7 @@ def run_wfoverlap(QMin,errorcodes):
         for m in itmult(QMin['states']):
             job=QMin['multmap'][m]
             WORKDIR=os.path.join(QMin['scratchdir'],'WFOVL_%i_%i' % (m,job))
-            files={'aoovl':'AO_overl.mixed', 
+            files={'aoovl':'AO_overl.mixed',
                          'det.a': 'dets.%i.old' % m,
                          'det.b': 'dets.%i' % m,
                          'mo.a':    'mos.%i.old' % job,
@@ -4130,7 +4161,7 @@ def get_Double_AOovl_gbw(QMin):
   filename1=os.path.join(QMin['savedir'],'ORCA.gbw.1.old')
   filename2=os.path.join(QMin['savedir'],'ORCA.gbw.1')
 
-  # 
+  #
   #NAO,Smat=get_smat_from_Molden(filename1,filename2)
   NAO,Smat=get_smat_from_gbw(filename1,filename2)
 
@@ -4196,6 +4227,7 @@ def getQMout(QMin):
             # first get energies from TAPE21
             logfile=os.path.join(QMin['scratchdir'],'master_%i/ORCA.log' % (job))
             energies=getenergy(logfile,job,QMin)
+            print energies
             #print energies
             # also get SO matrix and mapping
             if 'soc' in QMin and QMin['jobs'][job]['restr']:
@@ -4264,6 +4296,9 @@ def getQMout(QMin):
 
     # Gradients
     if 'grad' in QMin:
+        if QMin['template']['method']=='NEVPT2' or QMin['template']['method']=='CASSCF':
+          print 'Gradients for multireference methods not implemented yet.'
+          sys.exit('Gradients for multireference methods not implemented yet.') ## TODO: Add error code
         if not 'grad' in QMout:
             QMout['grad']=[ [ [ 0. for i in range(3) ] for j in range(natom) ] for k in range(nmstates) ]
         if QMin['qmmm'] and not 'pcgrad' in QMout:
@@ -4473,6 +4508,7 @@ def getenergy(logfile,ijob,QMin):
     # figure out the excited state settings
     mults=QMin['jobs'][ijob]['mults']
     restr=QMin['jobs'][ijob]['restr']
+    method=QMin['template']['method']
     gsmult=mults[0]
     estates_to_extract=deepcopy(QMin['states'])
     estates_to_extract[gsmult-1]-=1
@@ -4486,46 +4522,74 @@ def getenergy(logfile,ijob,QMin):
 
     # extract excitation energies
     # loop also works if no energies should be extracted
-    energies={(gsmult,1): gsenergy}
-    for imult in mults:
-      nstates=estates_to_extract[imult-1]
-      #print nstates
-      if nstates>0:
-        strings=[ ['TD-DFT/TDA',
-                    'TD-DFT',
-                    'RPA',
-                    'CIS'],
-                  ['EXCITED STATES']
-                ]
-        if QMin['OrcaVersion']>=(4,1):
-          if restr:
-            if imult==1:
-                strings.append( ['SINGLETS'] )
-            if imult==3:
-                strings.append( ['TRIPLETS'] )
+    energies = {}
+    if method=='NEVPT2':
+        statesfoundflag = False
         for iline,line in enumerate(f):
-          if all( [ any( [ i in line for i in st] ) for st in strings] ):
-            #print line
-          #if 'TD-DFT/TDA EXCITED STATES' in line or 'TD-DFT EXCITED STATES' in line or 'RPA EXCITED STATES' in line or 'CIS-EXCITED STATES' in line:
-            #if QMin['OrcaVersion']>=(4,1):
-            break
-        finalstring=['Entering ','-EXCITATION SPECTRA']
-        while True:
-          iline+=1
-          if iline>=len(f):
-            print 'Error in parsing excitation energies'
-            sys.exit(102)
-          line=f[iline]
-          if any( [i in line for i in finalstring] ):
-            break
-          if 'STATE' in line:
-            #print line
-            s=line.replace(':',' ').split()
-            e=gsenergy+float(s[-2])*rcm_to_Eh
-            i=int(s[1])
-            if i>nstates:
-              break
-            energies[ (imult, i+(gsmult==imult)) ]=e
+            if 'NEVPT2 TOTAL ENERGIES' in line:
+                while True:
+                    iline+=1
+                    if iline>=len(f):
+                        print 'Error in parsing excitation energies'
+                        sys.exit(102)
+                    line=f[iline]
+                    if statesfoundflag:
+                        if len(f[iline].split()) == 0:
+                            print 'Found the end of energies!'
+                            break
+                        s=line.replace(':',' ').split()
+                        print "Energy?" + s[-1]
+                        e=float(s[-1])*rcm_to_Eh
+                        root=int(s[1])
+                        imult=int(s[2])
+                        energies[ (imult, root+1) ]=e
+                    if 'STATE' in line:
+                        statesfoundflag = True # We have found the line immmediately preceding the listing of all roots
+                break
+    if method=='CASSCF':
+      print 'CASSCF not implemented for ORCA yet.'
+      sys.exit(102) #Sorry for overloading this error code
+    if method=='SR':
+      energies={(gsmult,1): gsenergy}
+      for imult in mults:
+        nstates=estates_to_extract[imult-1]
+        #print nstates
+        if nstates>0:
+            strings=[ ['TD-DFT/TDA',
+                        'TD-DFT',
+                        'RPA',
+                        'CIS'],
+                      ['EXCITED STATES']
+                    ]
+            if QMin['OrcaVersion']>=(4,1):
+              if restr:
+                if imult==1:
+                    strings.append( ['SINGLETS'] )
+                if imult==3:
+                    strings.append( ['TRIPLETS'] )
+            for iline,line in enumerate(f):
+              if all( [ any( [ i in line for i in st] ) for st in strings] ):
+                #print line
+              #if 'TD-DFT/TDA EXCITED STATES' in line or 'TD-DFT EXCITED STATES' in line or 'RPA EXCITED STATES' in line or 'CIS-EXCITED STATES' in line:
+                #if QMin['OrcaVersion']>=(4,1):
+                break
+            finalstring=['Entering ','-EXCITATION SPECTRA']
+            while True:
+              iline+=1
+              if iline>=len(f):
+                print 'Error in parsing excitation energies'
+                sys.exit(102)
+              line=f[iline]
+              if any( [i in line for i in finalstring] ):
+                break
+              if 'STATE' in line:
+                #print line
+                s=line.replace(':',' ').split()
+                e=gsenergy+float(s[-2])*rcm_to_Eh
+                i=int(s[1])
+                if i>nstates:
+                  break
+                energies[ (imult, i+(gsmult==imult)) ]=e
     return energies
 
 ## ======================================================================= #
@@ -4618,18 +4682,38 @@ def gettdm(logfile,ijob,QMin):
 
     # extract transition dipole moments
     dipoles={}
-    for imult in mults:
-      if not imult==gsmult:
-        continue
-      nstates=estates_to_extract[imult-1]
-      if nstates>0:
-        for iline,line in enumerate(f):
-          if '  ABSORPTION SPECTRUM VIA TRANSITION ELECTRIC DIPOLE MOMENTS' in line:
-            for istate in range(nstates):
-              shift=5+istate
-              s=f[iline+shift].split()
-              dm=[ float(i) for i in s[5:8] ]
-              dipoles[ (imult,istate+1+(gsmult==imult)) ]=dm
+    if QMin['template']['method']=='SR':
+      for imult in mults:
+        if not imult==gsmult:
+          continue
+        nstates=estates_to_extract[imult-1]
+        if nstates>0:
+          for iline,line in enumerate(f):
+            if '  ABSORPTION SPECTRUM VIA TRANSITION ELECTRIC DIPOLE MOMENTS' in line:
+              for istate in range(nstates):
+                shift=5+istate
+                s=f[iline+shift].split()
+                dm=[ float(i) for i in s[5:8] ]
+                dipoles[ (imult,istate+1+(gsmult==imult)) ]=dm
+              break
+    if QMin['template']['method']=='NEVPT2' or QMin['template']['method']=='CASSCF':
+      foundSpectrum = False
+      nstates=estates_to_extract[gsmult-1]
+      for iline, line in enumerate(f):
+        if QMin['template']['method']=='NEVPT2':
+          if 'CASSCF (NEVPT2 diagonal energies)' in line:
+            foundSpectrum = True
+        if QMin['template']['method']=='CASSCF':
+          if 'CASSCF UV' in line:
+            foundSpectrum = True
+        if 'fosc' in line and foundSpectrum:
+          for istate in range(nstates):
+            shift=3+istate
+            s=f[iline+shift].split()
+            dm=[ float(i) for i in s[-3:] ]
+            dipoles[ (gsmult,istate+2) ]=dm
+          print dipoles
+          break
     #print dipoles
     return dipoles
 
@@ -4662,6 +4746,9 @@ def getdm(logfile,isgs):
 # ======================================================================= #
 def getgrad(logfile,QMin):
 
+    if QMin['template']['method']=='NEVPT2' or QMin['template']['method']=='CASSCF':
+      print 'Gradients for multireference methods not implemented yet.'
+      sys.exit('Gradients for multireference methods not implemented yet.') ## TODO: Add error code
     # initialize
     natom=QMin['natom']
     g=[ [ 0. for i in range(3) ] for j in range(natom) ]
@@ -4701,6 +4788,10 @@ def getgrad(logfile,QMin):
 # ======================================================================= #
 def getgrad_from_log(logfile,QMin):
 
+    if QMin['template']['method']=='NEVPT2' or QMin['template']['method']=='CASSCF':
+      print 'Gradients for multireference methods not implemented yet.'
+      sys.exit('Gradients for multireference methods not implemented yet.') ## TODO: Add error code
+
     # read file
     out=readfile(logfile)
     if PRINT:
@@ -4717,12 +4808,16 @@ def getgrad_from_log(logfile,QMin):
       line=out[iline]
       if 'ORCA SCF GRADIENT CALCULATION' in line:
         break
-    
+
 
     return g
 
 # ======================================================================= #
 def getpcgrad(logfile,QMin):
+
+    if QMin['template']['method']=='NEVPT2' or QMin['template']['method']=='CASSCF':
+      print 'Gradients for multireference methods not implemented yet.'
+      sys.exit('Gradients for multireference methods not implemented yet.') ## TODO: Add error code
 
     # read file
     out=readfile(logfile)

@@ -78,6 +78,7 @@ keys tightscf zora
 
     ## ======== EXCITATIONS ============
 
+
     ## This keyword deactivates TDA (which the interface will request by default).
 #no_tda
 
@@ -104,14 +105,47 @@ paddingstates 0 0 0 0 0
     ## currently, only electrostatic embedding is supported by the SHARC-ORCA interface
 #qmmm
 
+    ## This keyword activates a QM/MM calculation, using TINKER for the MM part.
+    ## The default is to not run a QM/MM calculation.
+    ## If activated, the interface will look for two more files:
+    ## - a force field file in Amber95 format
+    ## - connection table file, specifying the connection table and atom types
+    ## currently, only electrostatic embedding is supported by the SHARC-ORCA interface
 
+    ## ======== MULTIREFERENCE OPTIONS (EXPERIMENTAL) ============
 
+    ## To do multireference calculations, uncomment the method keyword below
+    ## This feature is experimental, and currently only supports one multiplicity
+    ## NEVPT2 supported, raw CASSCF not yet supported
+#method NEVPT2
 
+    
+	
+    ## In this section you can specify options for the ORCA %casscf block
+    ## Note: The only options that are passed through are listed below
+    ## Default for all keywords is ''; you must specify each one explicitly
+    ## if you want it to appear in the block.
 
+#casscf nel 4
+#casscf norb 4
+#casscf cistep SuperCI_PT
+#casscf trafostep ri
 
+    ## gtol and etol given here necessary for accurate NEVPT2 numerical gradients (not implemented)
 
+#casscf gtol 1e-6
+#casscf etol 1e-12
 
+    ## Reminder: Make sure nroots matches number of roots from SHARC setup (not automatic)
+#casscf nroots 3
+#casscf weights[0]= 1,1,0
 
+    ## Options for NEVPT2 below (automatically encapsulated in PTSettings)
 
+#nevpt2 nthresh
+#nevpt2 d4step fly
+#nevpt2 d4tpre 1e-10
+#nevpt2 d3tpre 1e-14
+#nevpt2 tsmalldenom 1e-2
 
 # kate: syntax python
